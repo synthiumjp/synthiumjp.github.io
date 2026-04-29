@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jon-Paul Cacioli</title>
+<meta name="description" content="Jon-Paul Cacioli — applying psychophysics and cognitive science to questions about what language models represent and how to measure it.">
+<meta property="og:title" content="Jon-Paul Cacioli">
+<meta property="og:description" content="Applying psychophysics and cognitive science to questions about what language models represent and how to measure it. Independent researcher, Melbourne.">
+<meta property="og:url" content="https://synthiumjp.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@synthium_jp">
+<meta name="twitter:title" content="Jon-Paul Cacioli">
+<meta name="twitter:description" content="Applying psychophysics and cognitive science to questions about what language models represent and how to measure it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1916;
+    --ink-mid: #4a4843;
+    --ink-light: #8a8780;
+    --ink-faint: #c8c5be;
+    --paper: #f7f5f0;
+    --paper-warm: #ede9e0;
+    --accent: #2c5f4a;
+    --accent-light: #4a8c6e;
+    --serif: 'EB Garamond', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --rule: 1px solid var(--ink-faint);
+    --max: 680px;
+  }
+
+  html { font-size: 18px; background: var(--paper); color: var(--ink); }
+
+  body {
+    font-family: var(--serif);
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* Layout */
+  .wrapper {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* Header */
+  header {
+    border-bottom: var(--rule);
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .name {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink-mid);
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .bio {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .bio-affil {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-top: 0.9rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .links a:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Research blurb */
+  .research-text {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  .research-text p + p {
+    margin-top: 0.75rem;
+  }
+
+  /* Tool section: top-level feature for reusable artifacts */
+  .tool-block {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.5rem 1.3rem;
+    margin-top: 0.5rem;
+  }
+
+  .tool-block-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .tool-block-desc {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 0.9rem;
+  }
+
+  .tool-block-desc + .tool-block-desc {
+    margin-top: 0;
+  }
+
+  .tool-block-tiers {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .tool-block-install {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--ink-faint);
+    padding: 0.65rem 0.85rem;
+    margin: 0 0 1rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .tool-block-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--ink-faint);
+  }
+
+  .tool-block-links a,
+  .tool-block-links span.pending {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tool-block-links span.pending {
+    color: var(--ink-light);
+    border-bottom-color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .tool-block-links a:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* Papers */
+  .paper-list {
+    list-style: none;
+  }
+
+  /* Programmes: research stream groupings within Recent Work */
+  .programme {
+    margin-bottom: 2.75rem;
+  }
+
+  .programme:last-child {
+    margin-bottom: 0;
+  }
+
+  .programme-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+
+  .programme-title {
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 0.3rem;
+  }
+
+  .programme-blurb {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--ink-light);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Tool callout: for highlighting practical artifacts (screeners, datasets, etc.) */
+  .tool-callout {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.1rem;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .tool-callout-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.45rem;
+  }
+
+  .tool-callout-title {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+
+  .tool-callout-desc {
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+  }
+
+  .tool-callout-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .tool-callout-links a {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tool-callout-links a:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .paper {
+    padding: 1.25rem 0;
+    border-bottom: var(--rule);
+  }
+
+  .paper:first-child {
+    border-top: var(--rule);
+  }
+
+  /* Collapsible paper details */
+  .paper details {
+    /* Reset */
+  }
+
+  .paper details > summary {
+    cursor: pointer;
+    list-style: none;
+    /* Hide default marker */
+    outline: none;
+  }
+
+  .paper details > summary::-webkit-details-marker { display: none; }
+  .paper details > summary::marker { display: none; }
+
+  .paper-summary-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .paper-chevron {
+    flex-shrink: 0;
+    width: 0.7rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    margin-top: 0.22rem;
+    transition: transform 0.2s ease, color 0.15s;
+    display: inline-block;
+    transform-origin: center;
+  }
+
+  .paper details[open] > summary .paper-chevron {
+    transform: rotate(90deg);
+    color: var(--accent);
+  }
+
+  .paper details > summary:hover .paper-chevron {
+    color: var(--accent);
+  }
+
+  .paper-summary-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .paper-oneline {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+
+  .paper-expand {
+    margin-top: 0.85rem;
+    padding-top: 0.2rem;
+  }
+
+  .paper-expand .paper-desc {
+    margin-bottom: 0.3rem;
+  }
+
+  .paper-title {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .paper-meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .paper-desc {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .paper-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .paper-links a {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .paper-links a:hover {
+    border-color: var(--accent);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  .status-submitted { background: #e8f0ed; color: var(--accent); }
+  .status-review { background: #f0ede8; color: #7a5c2e; }
+  .status-progress { background: #f0f0f0; color: var(--ink-light); }
+  .status-preprint { background: #eaf0fb; color: #2a5a9a; }
+
+  /* Earlier work */
+  .earlier-list {
+    list-style: none;
+  }
+
+  .earlier-item {
+    padding: 0.9rem 0;
+    border-bottom: var(--rule);
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1rem;
+    align-items: start;
+  }
+
+  .earlier-item:first-child {
+    border-top: var(--rule);
+  }
+
+  .earlier-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    padding-top: 0.2rem;
+  }
+
+  .earlier-title {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--ink-mid);
+  }
+
+  .earlier-venue {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--ink-light);
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .citations {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--accent);
+    margin-left: 0.5rem;
+  }
+
+  /* Credentials */
+  .credentials {
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.9;
+  }
+
+  .credentials span {
+    display: block;
+  }
+
+  /* Footer */
+  footer {
+    border-top: var(--rule);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  /* Responsive */
+  @media (max-width: 520px) {
+    .wrapper { padding: 2.5rem 1.25rem 4rem; }
+    .name { font-size: 1.6rem; }
+    footer { flex-direction: column; }
+  }
+
+  /* Subtle load animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.5s ease both; }
+  section:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+  section:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
+  section:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
+  section:nth-child(4) { animation: fadeUp 0.5s 0.34s ease both; }
+  section:nth-child(5) { animation: fadeUp 0.5s 0.42s ease both; }
+  section:nth-child(6) { animation: fadeUp 0.5s 0.5s ease both; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <h1 class="name">Jon-Paul Cacioli</h1>
+    <p class="tagline">Measurement theory for language models</p>
+    <p class="bio">
+      I apply the formal tools psychology spent a century developing. Signal detection theory, psychophysics, psychometric validity. The question is what language models represent, and how to evaluate them rigorously. My work has shown that accuracy and metacognitive sensitivity rank opposite at the frontier. That LLM confidence falls into three distinct monitoring-control profiles, consistent with the Nelson and Narens architecture. That confidence signals require validity screening before they can be interpreted.
+    </p>
+    <p class="bio-affil">Independent researcher, Melbourne.</p>
+    <nav class="links">
+      <a href="https://orcid.org/0009-0000-7054-2014" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://scholar.google.com/citations?user=L3xQLp0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://github.com/synthiumjp" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://osf.io/profile/mr7u3" target="_blank" rel="noopener">OSF</a>
+      <a href="https://x.com/synthium_jp" target="_blank" rel="noopener">X</a>
+      <a href="javascript:void(0)" onclick="window.location='mai'+'lto:'+'synthium'+'@'+'hotmail.com'">Email</a>
+    </nav>
+  </header>
+
+  <section>
+    <p class="section-label">Research</p>
+    <div class="research-text">
+      <p>
+        Psychophysics spent a century developing rigorous methods for characterising noisy decision-making systems. Signal detection theory. Weber's Law. Metacognitive monitoring. Rivalry dynamics. These frameworks were built for minds. The question is whether they are equally revealing about machines.
+      </p>
+      <p>
+        A parallel thread uses child-scale language models as experimental tools. The goal is to probe the computational limits of distributional learning, and to test formal theories of word learning, inductive bias, and referential pragmatics against pre-registered boundary conditions.
+      </p>
+      <p>
+        Across both programmes, one question recurs. What does the model actually represent, and how would we know?
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Tool</p>
+    <div class="tool-block">
+      <p class="tool-block-title">Validity screening for LLM confidence signals</p>
+      <p class="tool-block-desc">
+        A portable protocol for checking whether a model's confidence signal carries item-level information about correctness. Six indices adapted from the PAI and MMPI-3 validity frameworks. Calibrated against 20 frontier LLMs. Cross-benchmark validated.
+      </p>
+      <p class="tool-block-tiers">
+        Three-tier classification. Invalid, Indeterminate, Valid. Computed from a single correctness-by-confidence contingency table.
+      </p>
+      <pre class="tool-block-install">git clone https://github.com/synthiumjp/validity-scaling-llm</pre>
+      <p class="tool-block-desc">
+        The protocol identifies models whose confidence signals are dominated by response style rather than item-level discrimination. Unscreened invalid models produce AUROC near chance on selective prediction despite producing plausible confidence traces.
+      </p>
+      <div class="tool-block-links">
+        <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
+        <a href="https://arxiv.org/abs/2604.17707" target="_blank" rel="noopener">Derivation paper</a>
+        <a href="https://arxiv.org/abs/2604.17714" target="_blank" rel="noopener">Protocol paper</a>
+        <a href="https://arxiv.org/abs/2604.17716" target="_blank" rel="noopener">Criterion validation</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Recent Work</p>
+
+    <!-- PROGRAMME 1: Metacognition & self-monitoring in LLMs -->
+    <div class="programme">
+      <div class="programme-header">
+        <p class="programme-title">Metacognition &amp; self-monitoring in LLMs</p>
+        <p class="programme-blurb">Signal detection theory, monitoring-control coupling, and validity scaling for confidence signals.</p>
+      </div>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    The Metacognitive Monitoring Battery: A Cross-Domain Benchmark for LLM Self-Monitoring
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.15702 &nbsp;·&nbsp; Kaggle AGI Hackathon (Google DeepMind) &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A 524-item cross-domain battery for LLM self-monitoring. Three profiles emerge. Accuracy and metacognitive sensitivity rank opposite across 20 frontier LLMs.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                A cross-domain behavioural assay of monitoring-control coupling in LLMs, grounded in the Nelson and Narens (1990) metacognitive framework. The battery comprises 524 items across six cognitive domains, each grounded in an established experimental paradigm. After every forced-choice response, dual probes adapted from Koriat and Goldsmith (1996) ask the model to KEEP or WITHDRAW its answer and to BET or decline. Applied to 20 frontier LLMs (10,480 evaluations), the battery discriminates three profiles consistent with the Nelson-Narens architecture: blanket confidence, blanket withdrawal, and selective sensitivity. Accuracy rank and metacognitive sensitivity rank are largely inverted. Scaling on metacognitive calibration is architecture-dependent. Monotonically decreasing (Qwen), monotonically increasing (GPT-5.4), or flat (Gemma). No universal scaling law.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.15702" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://huggingface.co/papers/2604.15702" target="_blank" rel="noopener">Hugging Face</a>
+                <a href="https://github.com/synthiumjp/metacognitive-monitoring-battery" target="_blank" rel="noopener">Code &amp; data</a>
+                <a href="https://www.kaggle.com/benchmarks/jonpaulcacioli/classical-minds-modern-machines" target="_blank" rel="noopener">Kaggle writeup</a>
+              </div>
+              <div style="margin-top:0.75rem; background:var(--paper-warm); border-left:2px solid var(--ink-faint); padding:0.6rem 0.8rem;">
+                <p style="font-family:var(--mono); font-size:0.58rem; color:var(--ink-light); margin-bottom:0.35rem; letter-spacing:0.05em; text-transform:uppercase;">Load dataset</p>
+                <code style="font-family:var(--mono); font-size:0.65rem; color:var(--ink-mid);">from datasets import load_dataset<br>dataset = load_dataset("synthiumjp/metacognitive-monitoring-battery")</code>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Before You Interpret the Profile: Validity Scaling for LLM Metacognitive Self-Report
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.17707 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Six validity indices cross-mapped from the PAI and MMPI-3, calibrated against 20 frontier models. Classifies four as construct-level invalid.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                The derivation paper for the validity screening framework. Six validity indices cross-mapped from the PAI and MMPI-3 (L, K, F, Fp, RBS, TRIN), calibrated against the 20-model MMB derivation sample with family-level comparison groups. A tiered classification system, validated against eight synthetic response policies, identifies four models as construct-level invalid. Valid-profile models produce item-sensitive confidence (mean r = .18). Invalid-profile models do not (mean r = -.20, d = 2.17). Chain-of-thought training produces two opposite response distortions. Two latent dimensions, corresponding to the under-reporting and over-reporting blocs of clinical assessment, account for 94.6% of index variance.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.17707" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Screen Before You Interpret: A Portable Validity Protocol for Benchmark-Based LLM Confidence Signals
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.17714 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A portable benchmark-agnostic screening procedure. Three core indices from a single contingency table. Cross-benchmark validated.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                The protocol paper. Extracts from the derivation study a portable, benchmark-agnostic screening procedure: three core indices (L, Fp, RBS) computed from a single correctness-by-confidence contingency table, plus a structural indicator (TRIN) and an item-sensitivity statistic. Three-tier classification (Invalid, Indeterminate, Valid) with subsampling analysis showing stable classification at 100-150 items. Cross-benchmark validation on external data (Yang et al., 2024) and an MMLU/verbalized-confidence variant confirms the protocol transfers. Validity is a property of the model-probe-task interaction, not an intrinsic property of the model.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.17714" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Concurrent Criterion Validation of a Validity Screen for LLM Confidence Signals via Selective Prediction
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.17716 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Concurrent validation against selective prediction. The three-tier classification accounts for 47% of variance in AUROC.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                The criterion-validation paper. Tests whether the validity tiers predict deployment-relevant selective prediction behaviour. Valid models achieve mean Type-2 AUROC = .624 [.604, .647]. Invalid models mean AUROC = .357 [.031, .522]. Tiers order monotonically (d = 2.81, p = .002). Split-half cross-validation yields median d = 1.77 across 1,000 splits with P(d &gt; 0) = 1.0. The three-tier classification accounts for 47.0% of variance in AUROC. DeepSeek-R1, classified Invalid by massive inversion, drops from 85.3% accuracy at full coverage to 11.3% at 10% coverage. Exactly the failure pattern selective prediction is supposed to avoid.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.17716" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Verbal Confidence Saturation in 3-9B Open-Weight Instruction-Tuned LLMs: A Pre-Registered Psychometric Validity Screen
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.22215 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Pre-registered application of the validity screen to seven 3-9B instruct models. All seven Invalid on numeric verbal confidence. Categorical elicitation does not rescue.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                The first applied use of the validity screening protocol on a published benchmark. Seven instruction-tuned open-weight models (3-9B parameters, four families) tested on 524 TriviaQA items under numeric (0-100) and categorical (10-class) confidence elicitation. All seven instruct models classified Invalid on numeric confidence, with mean ceiling rate 91.7%. Two models produced zero low-confidence responses across 500+ trials. Categorical elicitation did not rescue validity. It disrupted task performance, with most models dropping from 59-76% accuracy under numeric to 0.2-4.2% under categorical. Token-level logprobability did not usefully predict verbalised confidence (mean cross-validated R² &lt; 0.01). Within the reasoning-distilled model, reasoning-trace length showed a strong negative partial correlation with confidence (ρ = -.36), consistent with the Reasoning Contamination Effect. Internal item-level information exists (item difficulty correlates with mean confidence at ρ = .50) but does not survive the verbalised readout under minimal elicitation.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.22215" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/azbvx" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/koriat" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Distilling Self-Consistency into Verbal Confidence: A Pre-Registered Negative Result and Post-Hoc Rescue on Gemma 3 4B
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.24070 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A pre-registered SFT intervention on degenerate verbal confidence. The pre-registered protocol failed; an exploratory rescue produced a binary correctness discriminator (AUROC2 = 0.774) compressing 10-sample self-consistency into a single pass.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Tests whether confidence-conditioned supervised fine-tuning (CSFT) with self-consistency-derived targets can close the gap between internal information and verbal readout in small instruct models. The pre-registered Phase 0 protocol on Gemma 3 4B-it, with a modal filter restricting training to items with correct modal answers, produced a negative result: AUROC2 dropped from 0.554 to 0.509 due to label-entropy collapse in the training targets. An exploratory post-hoc rescue removed the filter, training on all 2,000 calibration items. This produced a binary verbal correctness discriminator with AUROC2 = 0.774 on held-out TriviaQA, compressing a 10-sample self-consistency signal (AUROC2 = 0.999) into a single-pass readout exceeding logit entropy (0.701). The shuffled-target control showed no improvement (0.501). On MMLU, accuracy improved from 54.2% to 77.4% with the shuffled model at baseline (56.1%), supporting a target-dependent interpretation. Two design lessons: confidence training requires label entropy, and correct targets regularise output format. The result is exploratory, binary rather than continuously calibrated, and observed at a single scale.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.24070" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/mpcr5" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/metacog-engineering" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    K-Way Energy Probes for Metacognition Reduce to Softmax in Discriminative Predictive Coding Networks
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.11011 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A negative result with an explanatory mechanism. Structural confidence probes on predictive coding networks reduce to softmax under standard training.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Predictive coding networks (PCNs) are an architecturally attractive substrate for structural metacognitive probing. An approximate decomposition shows that under standard discriminative PC, the K-way energy margin reduces to a monotone function of the log-softmax margin plus a residual that is not trained to correlate with correctness. The decomposition predicts the probe should track softmax from below. Confirmed empirically across six conditions (deterministic PC, BP+decoder control, matched-budget PC vs BP, Langevin temperature sweep, trajectory-integrated MCPC). In every condition the structural probe sat below softmax. MCPC versus final-state training differed by 6x10⁻⁴ AUROC2 at deterministic evaluation.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.11011" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/n2zjp/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/ima" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Cross-Entropy Is Load-Bearing: A Pre-Registered Scope Test of the K-Way Energy Probe on Bidirectional Predictive Coding
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.21286 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A pre-registered 10-seed scope test of the K-way probe decomposition. Cross-entropy, not inference dynamics, is the load-bearing assumption.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                A pre-registered follow-up that isolates which assumptions of the K-way decomposition are empirically load-bearing. Three conditions across 10 seeds on CIFAR-10: standard discriminative PC with cross-entropy (baseline), standard PC with MSE replacing CE, and bidirectional PC (Oliviers et al., 2025). The original negative result replicates on CE-trained PC (Δ = -0.082, p &lt; 10⁻⁶). Removing CE alone halves the probe-softmax gap (Δ = -0.037). Bidirectional PC flips the gap positive across all 10 seeds (Δ = +0.008), though a pre-registered manipulation check shows bPC does not produce materially greater latent movement at this scale. A post-hoc temperature scaling ablation decomposes the gap: approximately 66% is attributable to CE-induced logit-scale inflation, 34% to a scale-invariant ranking advantage of proper scoring rules. Confirms that the earlier negative result is correctly scoped to CE-trained discriminative PC rather than a general limitation of structural probing.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.21286" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/2kvsp" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/ima" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Quantisation Reshapes the Metacognitive Geometry of Language Models
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.08976 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">M-ratio profiles across knowledge domains are uncorrelated across quantisation formats (ρ = 0.00). AUROC2 rankings are perfectly stable (ρ = 1.00).</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                A pre-registered intervention study that set out to improve domain-specific metacognition through targeted SFT, and instead discovered that M-ratio profiles are format-dependent. Quantisation restructures domain-level metacognitive geometry completely (Spearman ρ = 0.00 across Q5_K_M and f16), while Type-2 AUROC rankings are perfectly stable (ρ = 1.00). The dissociation localises to the M-ratio normalisation: quantisation shifts d′ non-proportionally across domains, which propagates through division into an apparent profile restructuring absent in the raw discrimination signal. Diagnostic systems relying on M-ratio profiles have an unexamined dependency on inference format. AUROC2-based diagnostics do not.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.08976" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/8c6kp/" target="_blank" rel="noopener">OSF pre-registration (pilot)</a>
+                <a href="https://osf.io/juhcr/" target="_blank" rel="noopener">OSF pre-registration (confirmatory)</a>
+                <a href="https://github.com/synthiumjp/sdt-calibration" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Do LLMs Know What They Know? Measuring Metacognitive Efficiency with Signal Detection Theory
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2603.25112 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Type-2 SDT applied across four LLMs and 224,000 factual QA trials. AUROC2 and M-ratio rankings are fully inverted.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Standard calibration metrics (ECE, Brier score, AUROC) conflate how much a model knows (Type-1 sensitivity) with how well it knows what it knows (Type-2 metacognitive sensitivity). We introduce meta-d′ and M-ratio as an evaluation framework across four LLMs and 224,000 factual QA trials. Mistral achieves the highest Type-1 sensitivity but the lowest metacognitive efficiency. Gemma-2 shows near-optimal efficiency despite lower sensitivity. AUROC2 and M-ratio produce fully inverted model rankings. Temperature manipulation dissociates confidence policy from metacognitive capacity in instruction-tuned models, suggesting RLHF shifts criterion without improving metacognitive signal quality.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2603.25112" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/5q7mt/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://anonymous.4open.science/r/sdt_calibration-3662/README.md" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    LLMs as Signal Detectors: Sensitivity, Bias, and the Temperature-Criterion Analogy
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2603.14893 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Full parametric SDT applied to three LLMs across 168,000 trials. Temperature does not function as a clean criterion shift.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Standard LLM calibration metrics such as ECE conflate sensitivity (discriminating correct from incorrect) and bias (the tendency toward confident or cautious responding). This pre-registered study treats three LLMs as psychophysical observers performing factual discrimination across 168,000 trials, applying the full parametric SDT framework (unequal-variance model fitting, criterion estimation, z-ROC analysis) for the first time to language models. Temperature does not function as a clean criterion shift. It simultaneously increases sensitivity and shifts criterion. Models occupying distinct positions in sensitivity-bias space were indistinguishable by calibration metrics alone.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2603.14893" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/mr7u3/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://anonymous.4open.science/r/sdt_calibration-3662/README.md" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- PROGRAMME 2: AI safety & behavioural diagnostics -->
+    <div class="programme">
+      <div class="programme-header">
+        <p class="programme-title">AI safety &amp; behavioural diagnostics</p>
+        <p class="programme-blurb">Applying clinical malingering and validity-testing logic to behavioural deception in language models.</p>
+      </div>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Below-Chance Blindness: Prompted Underperformance in Small LLMs Produces Positional Bias Rather than Answer Avoidance
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.25249 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Pre-registered test of below-chance accuracy as a sandbagging detector. The plausibility gate failed. The model that complied implemented underperformance as positional bias, not answer-aware avoidance.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Tests whether symptom validity testing logic from clinical malingering detection can identify sandbagging through below-chance performance on forced-choice items. Pre-registered pilot at the 7-9B instruction-tuned scale: 3 models, 4 MMLU-Pro domains, 4 conditions, 500 items per cell, 24,000 total trials. The plausibility gate failed. Zero of 12 model-domain cells showed significant below-chance performance under sandbagging instruction. Exploratory analyses revealed three qualitatively distinct failure modes. Qwen-2.5-7B and Phi-3.5-mini largely ignored the sandbagging instruction (62-88% response identity with honest baseline). Llama-3-8B complied substantially but implemented underperformance as a positional heuristic, collapsing its response distribution onto middle-alphabet options (E at 31.8%, F at 26.1%) regardless of where the correct answer fell. An explicit anti-task instruction ("pick the least likely answer") drove two of three models below chance, with accuracy as low as 0.024. The capability for answer-aware avoidance exists but is not activated by "deliberately underperform." Positional-distribution shift may be a more effective behavioural signature than below-chance accuracy for detecting prompted underperformance at this scale.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.25249" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/6zftv/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/bcb-sandbagging-pilot" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- PROGRAMME 3: Psychophysics of transformer representations -->
+    <div class="programme">
+      <div class="programme-header">
+        <p class="programme-title">Psychophysics of transformer representations</p>
+        <p class="programme-blurb">Applying Weber's Law, categorical perception, and scalar variability to probe what transformers represent.</p>
+      </div>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Weber's Law in Transformer Magnitude Representations: Efficient Coding, Representational Geometry, and Psychophysical Laws in Language Models
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2603.20642 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Four converging paradigms in three 7-9B models. Representational geometry is log-compressive, consistent with Weber's Law, but dissociated from behaviour.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Applies formal tools of psychophysics to resolve conflicting accounts of how transformers represent magnitude. Across four converging paradigms (RSA, behavioural discrimination, precision gradients, causal intervention) in three 7-9B instruction-tuned models, representational geometry is consistently log-compressive, consistent with Weber's Law, but dissociated from behaviour. Early layers are functionally implicated in magnitude processing while later layers, where geometry is strongest, are not causally engaged.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2603.20642" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/5r76n/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/weber" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Same Geometry, Opposite Noise: Transformer Magnitude Representations Lack Scalar Variability
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.04469 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Transformer magnitude representations reproduce the geometry but not the noise profile of biological magnitude systems.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Scalar variability, noise proportional to magnitude producing a constant coefficient of variation, is a hallmark of biological magnitude systems. This pre-registered companion to the Weber study tests whether transformers share this property. They show the opposite. Representational variability decreases with magnitude (α ≈ -0.19; 0/48 model-layer cells with α &gt; 0). Corpus frequency strongly predicts per-magnitude variability (ρ = .84), consistent with a distributional account. Distributional learning produces the geometry of biological magnitude representation but not the noise.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.04469" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/w4892/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/weber" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Categorical Perception in Large Language Model Hidden States: Structural Warping at Digit-Count Boundaries
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2603.28258 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">RSA across six models identifies categorical warping at digit-count boundaries. Two signatures emerge: classic CP in some families, geometry-without-report in others.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Categorical perception, enhanced discriminability at category boundaries, is among the most studied phenomena in perceptual psychology. Using RSA across six models from five architecture families, a CP-additive model fits the representational geometry better than a purely continuous model at 100% of primary layers in every model tested. The effect is specific to structurally defined boundaries (digit-count transitions at 10 and 100), absent at non-boundary controls, and absent in the temperature domain. Two distinct signatures emerge. Classic CP (Gemma, Qwen), where models both categorise explicitly and show geometric warping. Structural CP (Llama, Mistral, Phi), where geometry warps but models cannot report the distinction.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2603.28258" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/qrxf3/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://anonymous.4open.science/r/weber-B02C" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- PROGRAMME 4: Child-scale language models -->
+    <div class="programme">
+      <div class="programme-header">
+        <p class="programme-title">Child-scale language models as experimental tools</p>
+        <p class="programme-blurb">Testing formal theories of word learning, inductive bias, and referential pragmatics against pre-registered boundary conditions.</p>
+      </div>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Do Structural Priors Help Neural Language Models Learn Grammar? Evidence from Child-Scale Data
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta"><a href="https://comp-dev-ling.github.io/" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">1st Workshop on Computational Developmental Linguistics</a> &nbsp;·&nbsp; ACL 2026 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Pre-registered evaluation of a neurosymbolic architecture. Structural priors produce phenomenon-specific effects rather than uniform improvements.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Pre-registered evaluation of a neurosymbolic architecture combining BabyBERTa with a differentiable PCFG auxiliary loss derived from Minimalist Grammar. Structural priors produce phenomenon-specific effects. Filler-gap dependencies improve by 9-13 pp (d = 2.41-2.82) while locally-cued phenomena are damaged regardless of whether the grammar is real or random.
+              </p>
+              <div class="paper-links">
+                <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink-light); font-style:italic;">Pre-registration &amp; code available on acceptance</span>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Exemplar Retrieval Without Overhypothesis Induction: Limits of Distributional Sequence Learning in Early Word Learning
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2604.05243 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">Pre-registered test of second-order generalisation in autoregressive transformers. Perfect first-order retrieval, chance on abstraction.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                Pre-registered test of whether autoregressive transformers trained on synthetic child-scale corpora induce overhypotheses (second-order generalisations about category structure). Models achieve perfect first-order exemplar retrieval but remain at chance on second-order generalisation across 120 runs and three model sizes. Feature-swap diagnostics reveal template matching rather than structured abstraction as the operative mechanism.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2604.05243" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/qj9hb/" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/overhypothesis" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    Repetition Without Exclusivity: Scale Sensitivity of Referential Mechanisms in Child-Scale Language Models
+                    <span class="status-badge status-preprint">Preprint</span>
+                  </p>
+                  <p class="paper-meta">arXiv:2603.13696 &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">First systematic evaluation of mutual exclusivity in text-only language models. All 45 models tested show repetition priming, not ME.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                First systematic evaluation of mutual exclusivity in text-only language models trained on child-directed speech. Across 45 GPT-2-architecture models spanning a 12x parameter range, all models show robust repetition priming rather than ME. Priming attenuates with better language modelling but never crosses zero. A context-dependence diagnostic rules out embedding artefacts as an alternative account.
+              </p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2603.13696" target="_blank" rel="noopener">arXiv</a>
+                <a href="https://osf.io/zu7af" target="_blank" rel="noopener">OSF pre-registration</a>
+                <a href="https://github.com/synthiumjp/study2-me-eval" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- PROGRAMME 5: In-progress / future work -->
+    <div class="programme">
+      <div class="programme-header">
+        <p class="programme-title">In progress</p>
+        <p class="programme-blurb">Work underway or in development.</p>
+      </div>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <details>
+            <summary>
+              <div class="paper-summary-row">
+                <span class="paper-chevron">▸</span>
+                <div class="paper-summary-body">
+                  <p class="paper-title">
+                    The Crewther Sampler: A Goal-Conditioned Leaky Competing Accumulator Model of Ambiguity Resolution
+                    <span class="status-badge status-progress">In progress</span>
+                  </p>
+                  <p class="paper-meta">Three-paper programme &nbsp;·&nbsp; 2026-2027</p>
+                  <p class="paper-oneline">A three-paper programme formalising the analogy between binocular rivalry and LLM ambiguity resolution.</p>
+                </div>
+              </div>
+            </summary>
+            <div class="paper-expand">
+              <p class="paper-desc">
+                A research programme formalising the analogy between binocular rivalry and LLM ambiguity resolution. The visual system resolves competing representations through mutual inhibition, adaptation, and goal-conditioned top-down modulation. The same computational problem faced by language models during ambiguous generation. Paper 1 validates the GC-LCA model against rivalry data. Paper 2 tests whether LLM internals exhibit metastable dynamics consistent with rivalry. Paper 3 applies the framework as an ambiguity detection mechanism.
+              </p>
+              <div class="paper-links">
+                <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink-light); font-style:italic;">Pre-registration forthcoming</span>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ul>
+    </div>
+
+  </section>
+
+
+  <section>
+    <p class="section-label">Earlier Publications</p>
+    <ul class="earlier-list">
+
+      <li class="earlier-item">
+        <span class="earlier-year">2014</span>
+        <div>
+          <p class="earlier-title">Avatar body dimensions and men's body image <span class="citations">63 citations</span></p>
+          <p class="earlier-venue">Body Image, 11(2), 146–155 &nbsp;·&nbsp; JP Cacioli, AJ Mussap</p>
+        </div>
+      </li>
+
+      <li class="earlier-item">
+        <span class="earlier-year">2014</span>
+        <div>
+          <p class="earlier-title">The relationship of attachment to resilience and their impact on perceived stress <span class="citations">40 citations</span></p>
+          <p class="earlier-venue">Stress and Anxiety: Applications to Social and Environmental Threats &nbsp;·&nbsp; P Marriner, J Cacioli et al.</p>
+        </div>
+      </li>
+
+      <li class="earlier-item">
+        <span class="earlier-year">2013</span>
+        <div>
+          <p class="earlier-title">Decision making-conflict as coping with stress: A qualitative exploration</p>
+          <p class="earlier-venue">48th APS Annual Conference, Cairns &nbsp;·&nbsp; J James, Lucas, JP Cacioli, K Moore</p>
+        </div>
+      </li>
+
+      <li class="earlier-item">
+        <span class="earlier-year">2012</span>
+        <div>
+          <p class="earlier-title">The cyclic alternating pattern (CAP) as an indicator of sleep disruption in traumatic brain injury patients</p>
+          <p class="earlier-venue">Sleep and Biological Rhythms, 10(1 suppl.), 26 &nbsp;·&nbsp; JP Cacioli, SMW Rajaratnam</p>
+        </div>
+      </li>
+
+      <li class="earlier-item">
+        <span class="earlier-year">2012</span>
+        <div>
+          <p class="earlier-title">Male body image in real and virtual environments</p>
+          <p class="earlier-venue">Deakin University (thesis) &nbsp;·&nbsp; JP Cacioli</p>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <section>
+    <p class="section-label">Background</p>
+    <div class="credentials">
+      <span>DPsych (Clinical Psychology) &nbsp;·&nbsp; Postgraduate Diploma in Psychology</span>
+      <span>BA Cognitive Science &nbsp;·&nbsp; BA Computer Science</span>
+      <span>Graduate Certificate in Business Administration</span>
+      <span>Registered Psychologist (Clinical) — AHPRA &nbsp;·&nbsp; ORCID <a href="https://orcid.org/0009-0000-7054-2014" style="color:var(--accent); text-decoration:none; font-family:var(--mono); font-size:0.75rem;">0009-0000-7054-2014</a></span>
+    </div>
+  </section>
+
+  <footer>
+    <span>Jon-Paul Cacioli &nbsp;·&nbsp; Melbourne, Australia</span>
+    <span>Updated 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
