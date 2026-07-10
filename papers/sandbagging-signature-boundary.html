@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Boundary of a Behavioural Sandbagging Signature — JP Cacioli</title>
+
+  <!-- Google Scholar meta tags -->
+  <meta name="citation_title" content="The Boundary of a Behavioural Sandbagging Signature: Induced Token Concentration and Its Mechanism">
+  <meta name="citation_author" content="Cacioli, Jon-Paul">
+  <meta name="citation_publication_date" content="2026/07/10">
+  <meta name="citation_doi" content="10.5281/zenodo.21295312">
+  <meta name="citation_pdf_url" content="https://synthiumjp.github.io/papers/sandbagging-signature-boundary.pdf">
+  <meta name="citation_language" content="en">
+  <meta name="citation_keywords" content="sandbagging; strategic underperformance; large language models; evaluation validity; activation probing; selection bias">
+
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --ink: #2c2c2c;
+      --ink-light: #7a7a7a;
+      --accent: #8b4513;
+      --serif: 'EB Garamond', 'Garamond', 'Georgia', serif;
+      --mono: 'DM Mono', 'Menlo', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--serif);
+      background: var(--bg);
+      color: var(--ink);
+      max-width: 680px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.6;
+    }
+    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.5rem; }
+    .meta a { color: var(--accent); text-decoration: none; }
+    .abstract { margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .abstract strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-light); }
+    .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .links a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+    }
+    .links a:hover { background: var(--accent); color: var(--bg); }
+    .back { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-light); text-decoration: none; }
+    .back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <h1>The Boundary of a Behavioural Sandbagging Signature: Induced Token Concentration and Its Mechanism</h1>
+  <p class="meta">
+    <a href="https://orcid.org/0009-0000-7054-2014">Jon-Paul Cacioli</a> &nbsp;·&nbsp; 2026
+    &nbsp;·&nbsp; DOI: <a href="https://doi.org/10.5281/zenodo.21295312">10.5281/zenodo.21295312</a>
+  </p>
+
+  <div class="abstract">
+    <strong>Abstract</strong>
+    A natural hope for detecting sandbagging, the deliberate underperformance of a language model on an evaluation, is that it leaves a behavioural trace, and prior work on small Llama-3 models reported one: under an explicit instruction to underperform, the answer distribution concentrates on a single option. We test whether this candidate signature generalises. Across ten models spanning five families and 7 to 72 billion parameters on 2,000 MMLU-Pro items, it appears in one of eight assessable models; several models comply with the instruction, dropping 25 to 40 accuracy points, without it, so its absence is not evidence of honest performance and a detector keyed to it would miss the strongest sandbaggers in the slate. It does not appear in the strongest non-Llama candidate, which leans toward serial position rather than label; it is Llama-lineage-specific here. Having bounded the phenomenon, we explain the one positive case. In Llama-3.1-8B the concentration follows the label token through a per-item position shuffle, so it is token-type not position-type, and it is at chance frequency in honest responding, so it is induced by the instruction rather than surfaced. An activation probe trained on honest trials decodes the correct answer from held-out sandbagging trials, including with the answer at a random position: the concentration is an output-side override of an intact content representation, well described by a Bernoulli override (rate 0.43) that reproduces the full accuracy drop. The contribution is a boundary result for a candidate detector, with a mechanistic account of its single positive case.
+  </div>
+
+  <div class="links">
+    <a href="sandbagging-signature-boundary.pdf">PDF</a>
+    <a href="https://zenodo.org/records/21295312">Zenodo</a>
+    <a href="https://github.com/synthiumjp/positional-collapse-expansion">Code</a>
+  </div>
+
+  <a class="back" href="/">&larr; Back to synthiumjp.github.io</a>
+</body>
+</html>
