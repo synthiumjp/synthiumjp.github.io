@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Resonance Gate: Endogenous Confidence from Retrieval Geometry in a Vector-Symbolic Memory — JP Cacioli</title>
+
+  <!-- Google Scholar meta tags -->
+  <meta name="citation_title" content="The Resonance Gate: Endogenous Confidence from Retrieval Geometry in a Vector-Symbolic Memory">
+  <meta name="citation_author" content="Cacioli, Jon-Paul">
+  <meta name="citation_publication_date" content="2026/07/20">
+  <meta name="citation_doi" content="10.5281/zenodo.21446859">
+  <meta name="citation_pdf_url" content="https://synthiumjp.github.io/papers/resonance-gate.pdf">
+  <meta name="citation_language" content="en">
+  <meta name="citation_keywords" content="vector symbolic architectures; hyperdimensional computing; associative memory; endogenous confidence; metacognition; uncertainty quantification; selective prediction; abstention; hallucination; retrieval-augmented generation; signal detection theory; type-2 AUROC">
+
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --ink: #2c2c2c;
+      --ink-light: #7a7a7a;
+      --accent: #8b4513;
+      --serif: 'EB Garamond', 'Garamond', 'Georgia', serif;
+      --mono: 'DM Mono', 'Menlo', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--serif);
+      background: var(--bg);
+      color: var(--ink);
+      max-width: 680px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.6;
+    }
+    h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.5rem; }
+    .meta a { color: var(--accent); text-decoration: none; }
+    .abstract { margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .abstract strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-light); }
+    .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .links a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+    }
+    .links a:hover { background: var(--accent); color: var(--bg); }
+    .back { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-light); text-decoration: none; }
+    .back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <h1>The Resonance Gate: Endogenous Confidence from Retrieval Geometry in a Vector-Symbolic Memory</h1>
+  <p class="meta">
+    <a href="https://orcid.org/0009-0000-7054-2014">Jon-Paul Cacioli</a> &nbsp;·&nbsp; 2026
+    &nbsp;·&nbsp; DOI: <a href="https://doi.org/10.5281/zenodo.21446859">10.5281/zenodo.21446859</a>
+  </p>
+
+  <div class="abstract">
+    <strong>Abstract</strong>
+    Most systems that give a language model long-term memory or a sense of its own limits add an exogenous confidence estimator: a second model, a trained head, or an LLM judge that inspects an answer after it is produced. We ask whether confidence can instead be endogenous, a structural property of the retrieval operation itself. We build the Resonance Gate (RG), a vector-symbolic (VSA/MAP) memory substrate in which retrieving an answer and scoring confidence in it are one operation, read from the geometry of a cleanup. A small frozen transformer verbalises gate-approved content and is never consulted for facts. No confidence-specific training exists anywhere in the system. We report a pre-registered confirmatory evaluation, a self-commissioned adversarial audit of it, and a harder fair-corpus re-test, all made public before this paper. Three results hold. An untrained closed-form mapping of the retrieval geometry to a belief/disbelief/uncertainty opinion carries essentially all the correctness information a trained logistic readout of the same features extracts (gap 0.013 AUROC2 on the clean corpus, inside a pre-registered 0.02 margin; a gradient-boosted foil does no better). Under a verify-then-speak discipline, ungrounded assertions in templated output are eliminated (0 of 263 templated bodies; 1 of 288 total, in free-text phrasing), measured by a judge validated at unit precision and recall on negation, implication, and temporal assertions. The endogenous signal is a store-membership signal, not an error detector: it separates what is in memory from what is not (gate minus a zero-parameter exact-key oracle, +0.077 AUROC2, CI excludes zero), but among items it answers it ranks correctness at chance (0.516), and membership plus one geometry scalar accounts for its whole advantage. The clean-corpus ambiguity and calibration ceilings we first measured (both 1.00) were artifacts of item construction, which the audit exposed. We give the substrate design, a load- and codebook-normalised resolution statistic with a capacity approximation, a two-geometry encoder, and the transparency process behind the corrections.
+  </div>
+
+  <div class="links">
+    <a href="resonance-gate.pdf">PDF</a>
+    <a href="https://zenodo.org/records/21446859">Zenodo</a>
+    <a href="https://osf.io/95e2q/">OSF pre-registration</a>
+    <a href="https://github.com/synthiumjp/resonance-gate">Code</a>
+  </div>
+
+  <a class="back" href="/">&larr; Back to synthiumjp.github.io</a>
+</body>
+</html>
