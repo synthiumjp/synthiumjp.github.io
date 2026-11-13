@@ -932,18 +932,20 @@
                 <span class="paper-chevron">▸</span>
                 <div class="paper-summary-body">
                   <p class="paper-title">
-                    Domain-Level Metacognitive Monitoring in Frontier LLMs: A 33-Model Atlas
+                    The Metacognitive Profile Atlas: Domain-Level Confidence Discrimination in 33 Frontier LLMs on MMLU
                     <span class="status-badge status-preprint">Preprint</span>
                   </p>
-                  <p class="paper-meta">arXiv:2605.06673 &nbsp;·&nbsp; 2026</p>
-                  <p class="paper-oneline">47,151 observations across 33 frontier LLMs. Applied/Professional is reliably the easiest domain to monitor; Formal Reasoning and Natural Science are the hardest. Aggregate AUROC conceals structured within-model variation.</p>
+                  <p class="paper-meta">arXiv:2605.06673 (v2, corrected) &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">An open dataset of answers and verbalized confidence from 33 frontier LLMs on 1,500 MMLU items. Confidence discriminates best on Applied/Professional items and worst on Formal Reasoning and Natural Science.</p>
                 </div>
               </div>
             </summary>
             <div class="paper-expand">
               <p class="paper-desc">
-                The largest standardised profile dataset for LLM metacognitive monitoring to date: 33 frontier LLMs from eight families, 1,500 MMLU items across six cognitive domains, 47,151 total observations. Every model with above-chance aggregate monitoring showed non-trivial domain-level variation. Applied/Professional was reliably easiest to monitor (mean AUROC = .742, top-2 in 21/33 models); Formal Reasoning and Natural Science were reliably hardest (.658 and .652). Three models classified Invalid under binary KEEP/WITHDRAW probes produced normal profiles under verbalised confidence, confirming probe-format specificity. The Anthropic family showed the highest and narrowest metacognitive quality range (.708–.806 across eight models). Gemma 4 31B showed a +.202 AUROC leap over Gemma 3 27B — the largest single-generation improvement in the dataset.
+                The Metacognitive Profile Atlas is a corpus of answer-plus-verbalized-confidence data from 33 frontier LLMs on 1,500 MMLU items stratified into six subject-group bins (46,157 scored observations after excluding parser-supplied values). It allows Type-2 AUROC, the degree to which confidence discriminates correct from incorrect answers, to be decomposed by domain. The reliable finding is a population-level ordering on MMLU: confidence discriminates best on Applied/Professional items (mean AUROC .750; ranked first in 100% of bootstrap resamples) and worst on Formal Reasoning and Natural Science (bottom two in 93% and 92%; Friedman χ²(5) = 28.26, p &lt; .0001). After Holm correction, Applied exceeds Formal, Science, Social and Humanities; no other pair survives. The ordering holds when imprecise cells are excluded or down-weighted. Per-model six-domain profiles are not reliable (median split-half r = .16) and are released for exploration only. Within-family similarity of profile shape is significant overall, but after multiplicity correction only Anthropic is individually supported. Paired-item analysis separates genuine monitoring gains (Opus 4.1 to 4.5 and 4.7) from error removal (Gemma 3 27B to Gemma 4 31B). Models whose binary-probe confidence failed or could not be certified on a separate battery discriminate well under verbalized confidence, and three Gemma 3 models show the reverse pattern.
               </p>
+              <p class="paper-desc">
+                <strong style="font-size:0.8rem; letter-spacing:0.03em;">Version 2.</strong> Incorporates revisions committed during peer review and narrows claims to the population-level ordering. Excludes 980 parser-imputed confidence values for GPT-oss-120B, whose v1 "anomalous" profile was an artefact of them (on its 518 genuine responses its AUROC is .800). Replaces descriptions of battery models as "Invalid" and of DeepSeek-R1 as inverted, which relied on the corrected validity screen v1. The paper's appendix lists every changed claim.</p>
               <div class="paper-links">
                 <a href="https://arxiv.org/abs/2605.06673" target="_blank" rel="noopener">arXiv</a>
                 <a href="https://github.com/synthiumjp/metacognitive-profile-atlas" target="_blank" rel="noopener">Code &amp; data</a>
