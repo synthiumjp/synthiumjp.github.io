@@ -586,20 +586,18 @@
     <div class="tool-block">
       <p class="tool-block-title">Validity screening for LLM confidence signals</p>
       <p class="tool-block-desc">
-        A portable protocol for checking whether a model's confidence signal carries item-level information about correctness. Six indices adapted from the PAI and MMPI-3 validity frameworks. Calibrated against 20 frontier LLMs. Cross-benchmark validated.
+        A portable screen for checking whether a model's confidence signal varies with correctness before any metric is computed on it. Adapted from the validity scales of clinical assessment (PAI, MMPI-3): the rate of high confidence on errors (L), the rate of low confidence on correct answers (Fp), and their contrast (RBS), with interval guards.
       </p>
       <p class="tool-block-tiers">
-        Three-tier classification. Invalid, Indeterminate, Valid. Computed from a single correctness-by-confidence contingency table.
+        Three outcomes. Invalid, Indeterminate (cannot certify), Valid. Computed from a single correctness-by-confidence table.
       </p>
       <pre class="tool-block-install">git clone https://github.com/synthiumjp/validity-scaling-llm</pre>
       <p class="tool-block-desc">
-        The protocol identifies models whose confidence signals are dominated by response style rather than item-level discrimination. Unscreened invalid models produce AUROC near chance on selective prediction despite producing plausible confidence traces.
+        The screen separates blanket confidence, blanket withdrawal and inversion, which call for different responses, and returns Valid only when the signal measurably tracks correctness. Verdicts need enough errors to certify (35 to 139), and on verbalized confidence they depend on the cut point used.
       </p>
       <div class="tool-block-links">
         <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
-        <a href="https://arxiv.org/abs/2604.17707" target="_blank" rel="noopener">Derivation paper</a>
-        <a href="https://arxiv.org/abs/2604.17714" target="_blank" rel="noopener">Protocol paper</a>
-        <a href="https://arxiv.org/abs/2604.17716" target="_blank" rel="noopener">Criterion validation</a>
+        <a href="https://arxiv.org/abs/2604.17714" target="_blank" rel="noopener">Paper (v2)</a>
       </div>
     </div>
 
@@ -673,75 +671,24 @@
                 <span class="paper-chevron">▸</span>
                 <div class="paper-summary-body">
                   <p class="paper-title">
-                    Before You Interpret the Profile: Validity Scaling for LLM Metacognitive Self-Report
+                    Screen Before You Interpret: A Portable Validity Screen for Benchmark-Based LLM Confidence Signals
                     <span class="status-badge status-preprint">Preprint</span>
                   </p>
-                  <p class="paper-meta">arXiv:2604.17707 &nbsp;·&nbsp; 2026</p>
-                  <p class="paper-oneline">Six validity indices cross-mapped from the PAI and MMPI-3, calibrated against 20 frontier models. Classifies four as construct-level invalid.</p>
+                  <p class="paper-meta">arXiv:2604.17714 (v2, corrected and consolidated) &nbsp;·&nbsp; 2026</p>
+                  <p class="paper-oneline">A validity screen, in the tradition of clinical assessment, that checks whether a confidence signal varies with correctness before metrics are computed on it. Version 2 corrects errors in v1 and supersedes two companion papers.</p>
                 </div>
               </div>
             </summary>
             <div class="paper-expand">
               <p class="paper-desc">
-                The derivation paper for the validity screening framework. Six validity indices cross-mapped from the PAI and MMPI-3 (L, K, F, Fp, RBS, TRIN), calibrated against the 20-model MMB derivation sample with family-level comparison groups. A tiered classification system, validated against eight synthetic response policies, identifies four models as construct-level invalid. Valid-profile models produce item-sensitive confidence (mean r = .18). Invalid-profile models do not (mean r = -.20, d = 2.17). Chain-of-thought training produces two opposite response distortions. Two latent dimensions, corresponding to the under-reporting and over-reporting blocs of clinical assessment, account for 94.6% of index variance.
+                LLM confidence signals drive abstention, routing and escalation, yet evaluations rarely check whether a signal varies with correctness before computing metrics on it. Clinical personality assessment handles the analogous problem by screening response validity before interpreting substantive scales. This paper specifies a portable screen in that tradition. From the correctness-by-confidence table it computes the rate of high confidence on errors (L), the rate of low confidence on correct answers (Fp), and their contrast (RBS, equal to minus Youden's J). It adds no new statistics: it separates blanket confidence, blanket withdrawal and inversion, attaches interval guards, and calls a signal Valid only when it measurably tracks correctness. On 20 frontier models answering 452 two-alternative items with binary KEEP/WITHDRAW probes, one model is Invalid (DeepSeek-R1 withdraws 95% of its correct answers), four are Indeterminate and 15 are Valid. Two Indeterminate models keep confidence on 96% of their errors but make too few errors to certify it; certification needs 35 to 139 errors. Only 6 of the 20 verdicts reproduce reliably on half the items. On verbalized 0–100 confidence (33 models on 1,500 MMLU items, 20 on a second 500-item sample, and Yang et al.'s data for 11 models on 10 benchmarks), the verdict depends on the cut point: at 50 most models are Invalid because answers pile at the ceiling, while at 90–95 most pass. Battery item sensitivity does not predict MMLU discrimination (ρ = −.07). Protocol amendments were settled on these data, so the verdicts are descriptive pending a held-out test.
               </p>
-              <div class="paper-links">
-                <a href="https://arxiv.org/abs/2604.17707" target="_blank" rel="noopener">arXiv</a>
-                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-          </details>
-        </li>
-
-        <li class="paper">
-          <details>
-            <summary>
-              <div class="paper-summary-row">
-                <span class="paper-chevron">▸</span>
-                <div class="paper-summary-body">
-                  <p class="paper-title">
-                    Screen Before You Interpret: A Portable Validity Protocol for Benchmark-Based LLM Confidence Signals
-                    <span class="status-badge status-preprint">Preprint</span>
-                  </p>
-                  <p class="paper-meta">arXiv:2604.17714 &nbsp;·&nbsp; 2026</p>
-                  <p class="paper-oneline">A portable benchmark-agnostic screening procedure. Three core indices from a single contingency table. Cross-benchmark validated.</p>
-                </div>
-              </div>
-            </summary>
-            <div class="paper-expand">
               <p class="paper-desc">
-                The protocol paper. Extracts from the derivation study a portable, benchmark-agnostic screening procedure: three core indices (L, Fp, RBS) computed from a single correctness-by-confidence contingency table, plus a structural indicator (TRIN) and an item-sensitivity statistic. Three-tier classification (Invalid, Indeterminate, Valid) with subsampling analysis showing stable classification at 100-150 items. Cross-benchmark validation on external data (Yang et al., 2024) and an MMLU/verbalized-confidence variant confirms the protocol transfers. Validity is a property of the model-probe-task interaction, not an intrinsic property of the model.
+                <strong style="font-size:0.8rem; letter-spacing:0.03em;">Correction notice.</strong> Version 2 corrects scoring, grading, classification and reporting errors in version 1, and supersedes the two companion papers, <em>Before You Interpret the Profile</em> (arXiv:2604.17707) and <em>Concurrent Criterion Validation</em> (arXiv:2604.17716). Version 1's dramatic results, including DeepSeek-R1's "inverted monitoring" profile and the selective-prediction validation, came from values the pipeline supplied rather than values the models produced. The paper's appendix lists every changed claim.
               </p>
               <div class="paper-links">
                 <a href="https://arxiv.org/abs/2604.17714" target="_blank" rel="noopener">arXiv</a>
-                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
-              </div>
-            </div>
-          </details>
-        </li>
-
-        <li class="paper">
-          <details>
-            <summary>
-              <div class="paper-summary-row">
-                <span class="paper-chevron">▸</span>
-                <div class="paper-summary-body">
-                  <p class="paper-title">
-                    Concurrent Criterion Validation of a Validity Screen for LLM Confidence Signals via Selective Prediction
-                    <span class="status-badge status-preprint">Preprint</span>
-                  </p>
-                  <p class="paper-meta">arXiv:2604.17716 &nbsp;·&nbsp; 2026</p>
-                  <p class="paper-oneline">Concurrent validation against selective prediction. The three-tier classification accounts for 47% of variance in AUROC.</p>
-                </div>
-              </div>
-            </summary>
-            <div class="paper-expand">
-              <p class="paper-desc">
-                The criterion-validation paper. Tests whether the validity tiers predict deployment-relevant selective prediction behaviour. Valid models achieve mean Type-2 AUROC = .624 [.604, .647]. Invalid models mean AUROC = .357 [.031, .522]. Tiers order monotonically (d = 2.81, p = .002). Split-half cross-validation yields median d = 1.77 across 1,000 splits with P(d &gt; 0) = 1.0. The three-tier classification accounts for 47.0% of variance in AUROC. DeepSeek-R1, classified Invalid by massive inversion, drops from 85.3% accuracy at full coverage to 11.3% at 10% coverage. Exactly the failure pattern selective prediction is supposed to avoid.
-              </p>
-              <div class="paper-links">
-                <a href="https://arxiv.org/abs/2604.17716" target="_blank" rel="noopener">arXiv</a>
-                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code</a>
+                <a href="https://github.com/synthiumjp/validity-scaling-llm" target="_blank" rel="noopener">Code (validity_screen 0.3.0)</a>
               </div>
             </div>
           </details>
